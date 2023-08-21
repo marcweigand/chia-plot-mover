@@ -27,13 +27,16 @@ def move_plot_file(file_path, destination):
         shutil.move(mv_file, dest_path)
         
         free_space = get_free_space(destination) / (1024 ** 3)  # Convert bytes to GB
-        total_space = os.statvfs(destination).f_blocks * os.statvfs(destination).f_frsize / (1024 ** 3)  # Convert bytes to GB
+        total_space = get_total_space(destination) / (1024 ** 3)  # Convert bytes to GB
         print(f"Transferred {mv_file} to {dest_path}. Chose destination {destination} due to no ongoing transfer and {free_space:.2f}GB of {total_space:.2f}GB available.")
 
         # Rename back to .plot
-        final_path = dest_path.replace('.plot-mv', '.plot')
-        os.rename(dest_path, final_path)
-        print(f"Renamed {dest_path} to {final_path}")
+        try:
+            final_path = dest_path.replace('.plot-mv', '.plot')
+            os.rename(dest_path, final_path)
+            print(f"Renamed {dest_path} to {final_path}")
+        except Exception as ren_err:
+            print(f"Error renaming file {dest_path}: {ren_err}")
 
     except Exception as e:
         print(f"Error while moving {file_path} to {destination}: {e}")
@@ -45,6 +48,11 @@ def get_free_space(folder):
     free_bytes = ctypes.c_ulonglong(0)
     ctypes.windll.kernel32.GetDiskFreeSpaceExW(ctypes.c_wchar_p(folder), None, None, ctypes.pointer(free_bytes))
     return free_bytes.value
+
+def get_total_space(folder):
+    total_bytes = ctypes.c_ulonglong(0)
+    ctypes.windll.kernel32.GetDiskFreeSpaceExW(ctypes.c_wchar_p(folder), ctypes.pointer(total_bytes), None, None)
+    return total_bytes.value
 
 def get_available_destination():
     valid_dirs = [dir for dir in dest_dirs 

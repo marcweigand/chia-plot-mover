@@ -16,7 +16,7 @@ This script offers a seamless solution. Plot to a zippy NVMe, then use this scri
 ## Requirements:
 
 1. **Windows OS**: Tailored explicitly for Windows, the mechanism for fetching disk space is unique to this platform.
-2. **Python**: Ensure the latest version of Python for Windows is installed. Acquire it [here](https://www.python.org/downloads/windows/).
+2. **Python**: Ensure you have Python 3.2 or newer installed. Modules such as `os`, `time`, `shutil`, `collections`, `ctypes`, and `concurrent.futures` are used and they are all part of Python's standard library. Specifically, `concurrent.futures` is a part of the standard library starting from Python 3.2. Acquire Python [here](https://www.python.org/downloads/windows/).
 
 ## Installation:
 
@@ -27,9 +27,7 @@ This script offers a seamless solution. Plot to a zippy NVMe, then use this scri
    ```
 
 2. **Install Required Libraries**:
-   ```
-   pip install -r requirements.txt
-   ```
+   There's no need for a `requirements.txt` as all libraries used are part of Python's standard library.
 
 ## How to Adjust the Script:
 
@@ -60,3 +58,4 @@ This project is licensed under the GPL 3.0 license. You can read more about its 
 Effective plot management is the essence of unlocking your hardware's full capability. This script minimizes plot idle times, capitalizing on your NVMe's rapid performance. For issues or suggestions, feel free to raise an issue or send in a PR. Happy farming!
 
 [Link to Repository](https://github.com/marcweigand/chia-plot-mover.git)
+---

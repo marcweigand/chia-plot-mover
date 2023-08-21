@@ -18,13 +18,19 @@ def move_plot_file(file_path, destination):
     try:
         mv_file = file_path.replace('.plot', '.plot-mv')
         os.rename(file_path, mv_file)
-        print(f"Renamed {file_path} to {mv_file} and starting transfer...")
+        print(f"Renaming {file_path} to {mv_file} for in-place transfer...")
 
+        # Define destination path
         dest_path = os.path.join(destination, os.path.basename(mv_file))
+        
+        # Move the file across drives
         shutil.move(mv_file, dest_path)
         
-        print(f"Transferred {mv_file} to {dest_path}")
-        
+        free_space = get_free_space(destination) / (1024 ** 3)  # Convert bytes to GB
+        total_space = os.statvfs(destination).f_blocks * os.statvfs(destination).f_frsize / (1024 ** 3)  # Convert bytes to GB
+        print(f"Transferred {mv_file} to {dest_path}. Chose destination {destination} due to no ongoing transfer and {free_space:.2f}GB of {total_space:.2f}GB available.")
+
+        # Rename back to .plot
         final_path = dest_path.replace('.plot-mv', '.plot')
         os.rename(dest_path, final_path)
         print(f"Renamed {dest_path} to {final_path}")

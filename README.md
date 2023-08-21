@@ -46,6 +46,17 @@ You can tailor specific parameters to your setup:
 
 This project is licensed under the GPL 3.0 license. You can read more about its permissions, conditions, and limitations [here](https://www.gnu.org/licenses/gpl-3.0.html).
 
+## Connect with Me:
+
+For updates and to get in touch, follow and message me on [X (Twitter) 🐦](https://twitter.com/marc_weigand).
+
+## Support the Project:
+
+If you've found this script beneficial, feel free to send over some Mojos to:
+```
+xch1mw8xtqffv6uhmuy786p79wmr5gq2q6uxmknz8pfgkmm8uya8uaassgvan4
+```
+
 ## Points to Remember:
 
 - Ensure directory permissions are in order.
@@ -58,4 +69,3 @@ This project is licensed under the GPL 3.0 license. You can read more about its 
 Effective plot management is the essence of unlocking your hardware's full capability. This script minimizes plot idle times, capitalizing on your NVMe's rapid performance. For issues or suggestions, feel free to raise an issue or send in a PR. Happy farming!
 
 [Link to Repository](https://github.com/marcweigand/chia-plot-mover.git)
----

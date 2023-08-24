@@ -51,7 +51,8 @@ def get_free_space(folder):
 
 def get_total_space(folder):
     total_bytes = ctypes.c_ulonglong(0)
-    ctypes.windll.kernel32.GetDiskFreeSpaceExW(ctypes.c_wchar_p(folder), ctypes.pointer(total_bytes), None, None)
+    free_bytes = ctypes.c_ulonglong(0)
+    ctypes.windll.kernel32.GetDiskFreeSpaceExW(ctypes.c_wchar_p(folder), ctypes.pointer(free_bytes), ctypes.pointer(total_bytes), None)
     return total_bytes.value
 
 def get_available_destination():
